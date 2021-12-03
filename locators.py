@@ -15,6 +15,11 @@ class MainPageLocators:
     DELETE = (By.ID, "com.dalviksoft.calculator:id/del")
     RES = (By.ID, "com.dalviksoft.calculator:id/formula")
 
+    DIVIDE = (By.XPATH, f"//android.widget.Button[@content-desc='divide']")
+    PLUS = (By.XPATH, f"//android.widget.Button[@content-desc='plus']")
+    TIMES = (By.XPATH, f"//android.widget.Button[@content-desc='times']")
+    MINUS = (By.XPATH, f"//android.widget.Button[@content-desc='minus']")
+
     X1 = (By.ID, "com.dalviksoft.calculator:id/op_pow")
     X2 = (By.ID, "com.dalviksoft.calculator:id/digit_1")
     X3 = (By.ID, "com.dalviksoft.calculator:id/fun_log")
@@ -30,4 +35,3 @@ class OperatorsPageLocators:
                         "/android.widget.LinearLayout[1]/android.widget.LinearLayout")
     DEGREE = (By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView"
                         "/android.widget.LinearLayout[2]/android.widget.LinearLayout")
-
