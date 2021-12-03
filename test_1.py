@@ -11,13 +11,13 @@ logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler(sys.stdout))
 
 
-@allure.title('Verify that basic operators calculates correctly for integer numbers')
+@allure.title('Test of "+", "-", "*", "/" of two integer numbers')
+@allure.description('Verify that basic operators calculates correctly for integer numbers')
 @pytest.mark.parametrize('operator_locator, operator_name', [(MainPageLocators.DIVIDE, 'divide'),
                                                              (MainPageLocators.TIMES, 'times'),
                                                              (MainPageLocators.MINUS, 'minus'),
                                                              (MainPageLocators.PLUS, 'plus')])
 def test_of_two_integers(driver, operator_locator, operator_name):
-    """Check operators of two numbers"""
     calculator = MainCalculatePage(driver)
     calculator.click_on_number(*MainPageLocators.NINE)
     calculator.click_on_operator(*operator_locator)
@@ -26,18 +26,18 @@ def test_of_two_integers(driver, operator_locator, operator_name):
     calculator.should_be_correct_integer_result(operator_name)
 
 
-@allure.title('Verify that number can be deleted')
+@allure.title('Test of deleting of number')
+@allure.description('Verify that number can be deleted')
 def test_delete_number(driver):
-    """Check of deleting number"""
     calculator = MainCalculatePage(driver)
     calculator.click_on_number(*MainPageLocators.THREE)
     calculator.delete_numbers()
     calculator.should_be_empty_result_field()
 
 
-@allure.title('Verify that square root of integer number calculates correctly')
+@allure.title('Test of square root of integer number')
+@allure.description('Verify that square root of integer number calculates correctly')
 def test_root_of_number(driver):
-    """Check square root of number"""
     calculator = MainCalculatePage(driver)
     calculator.go_to_operators_page()
 
@@ -52,12 +52,11 @@ def test_root_of_number(driver):
     calculator.should_be_correct_sqrt_result()
 
 
-@allure.title('Verify that function sin of number calculates correctly')
+@allure.title('Test of sine function')
+@allure.description('Verify that function sine of number calculates correctly')
 @pytest.mark.parametrize('how, what, result_num', [(*OperatorsPageLocators.RADIAN, "−0.9880316"),
                                                    (*OperatorsPageLocators.DEGREE, "0.5")])
 def test_sin(driver, how, what, result_num):
-    """Check sin of angle"""
-
     calculator = MainCalculatePage(driver)
     calculator.go_to_operators_page()
 
@@ -67,7 +66,6 @@ def test_sin(driver, how, what, result_num):
     operators_page.go_to_main_calculate_page()
 
     calculator = MainCalculatePage(driver)
-    # wait
     calculator.click_on_number(*MainPageLocators.THREE)
     calculator.click_on_number(*MainPageLocators.ZERO)
     calculator.click_on_equal()
